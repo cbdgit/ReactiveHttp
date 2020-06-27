@@ -47,27 +47,81 @@ interface ICoroutineEvent {
         return withContext(cpuDispatcher, block)
     }
 
-    fun CoroutineScope.launchMain(block: suspend CoroutineScope.() -> Unit): Job {
+    /******************************不和生命周期绑定的方法******************************/
+
+    fun launchMainG(block: suspend CoroutineScope.() -> Unit): Job {
+        return globalScope.launch(context = mainDispatcher, block = block)
+    }
+
+    fun launchIOG(block: suspend CoroutineScope.() -> Unit): Job {
+        return globalScope.launch(context = ioDispatcher, block = block)
+    }
+
+    fun launchCPUG(block: suspend CoroutineScope.() -> Unit): Job {
+        return globalScope.launch(context = cpuDispatcher, block = block)
+    }
+
+    fun <T> asyncMainG(block: suspend CoroutineScope.() -> T): Deferred<T> {
+        return globalScope.async(context = mainDispatcher, block = block)
+    }
+
+    fun <T> asyncIOG(block: suspend CoroutineScope.() -> T): Deferred<T> {
+        return globalScope.async(context = ioDispatcher, block = block)
+    }
+
+    fun <T> asyncCPUG(block: suspend CoroutineScope.() -> T): Deferred<T> {
+        return globalScope.async(context = cpuDispatcher, block = block)
+    }
+
+    /******************************和生命周期绑定的方法******************************/
+
+    fun launchMain(block: suspend CoroutineScope.() -> Unit): Job {
+        return lifecycleSupportedScope.launch(context = mainDispatcher, block = block)
+    }
+
+    fun launchIO(block: suspend CoroutineScope.() -> Unit): Job {
+        return lifecycleSupportedScope.launch(context = ioDispatcher, block = block)
+    }
+
+    fun launchCPU(block: suspend CoroutineScope.() -> Unit): Job {
+        return lifecycleSupportedScope.launch(context = cpuDispatcher, block = block)
+    }
+
+    fun <T> asyncMain(block: suspend CoroutineScope.() -> T): Deferred<T> {
+        return lifecycleSupportedScope.async(context = mainDispatcher, block = block)
+    }
+
+    fun <T> asyncIO(block: suspend CoroutineScope.() -> T): Deferred<T> {
+        return lifecycleSupportedScope.async(context = ioDispatcher, block = block)
+    }
+
+    fun <T> asyncCPU(block: suspend CoroutineScope.() -> T): Deferred<T> {
+        return lifecycleSupportedScope.async(context = cpuDispatcher, block = block)
+    }
+
+    /******************************扩展方法，外部不可调用******************************/
+
+    private fun CoroutineScope.launchMain(block: suspend CoroutineScope.() -> Unit): Job {
         return launch(context = mainDispatcher, block = block)
     }
 
-    fun CoroutineScope.launchIO(block: suspend CoroutineScope.() -> Unit): Job {
+    private fun CoroutineScope.launchIO(block: suspend CoroutineScope.() -> Unit): Job {
         return launch(context = ioDispatcher, block = block)
     }
 
-    fun CoroutineScope.launchCPU(block: suspend CoroutineScope.() -> Unit): Job {
+    private fun CoroutineScope.launchCPU(block: suspend CoroutineScope.() -> Unit): Job {
         return launch(context = cpuDispatcher, block = block)
     }
 
-    fun <T> CoroutineScope.asyncMain(block: suspend CoroutineScope.() -> T): Deferred<T> {
+    private fun <T> CoroutineScope.asyncMain(block: suspend CoroutineScope.() -> T): Deferred<T> {
         return async(context = mainDispatcher, block = block)
     }
 
-    fun <T> CoroutineScope.asyncIO(block: suspend CoroutineScope.() -> T): Deferred<T> {
+    private fun <T> CoroutineScope.asyncIO(block: suspend CoroutineScope.() -> T): Deferred<T> {
         return async(context = ioDispatcher, block = block)
     }
 
-    fun <T> CoroutineScope.asyncCPU(block: suspend CoroutineScope.() -> T): Deferred<T> {
+    private fun <T> CoroutineScope.asyncCPU(block: suspend CoroutineScope.() -> T): Deferred<T> {
         return async(context = cpuDispatcher, block = block)
     }
 

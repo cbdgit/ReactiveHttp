@@ -15,7 +15,7 @@ import github.leavesc.reactivehttp.config.HttpConfig
 open class BaseException(val errorCode: Int, val errorMessage: String, val localException: Throwable?) : Exception(errorMessage) {
 
     //是否是由于服务器返回的 code != successCode 导致的异常
-    val isServerException: Boolean
+    val isServerCodeNoSuccess: Boolean
         get() = this is ServerCodeNoSuccessException
 
     //是否是由于网络请求过程中抛出的异常（例如：服务器返回的 Json 解析失败）
@@ -29,5 +29,3 @@ class ServerCodeNoSuccessException(errorCode: Int, errorMessage: String) : BaseE
 
 //请求过程抛出异常
 class LocalBadException(errorMessage: String, localException: Throwable) : BaseException(HttpConfig.CODE_LOCAL_UNKNOWN, errorMessage, localException)
-
-class CallbackBadException
