@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.TestActivity">
+
+    <Button
+        android:id="@+id/btn_cleanLog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="清除日志文件" />
+
+    <Button
+        android:id="@+id/btn_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="包含各个回调时机" />
+
+    <Button
+        android:id="@+id/btn_cancelJob1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="取消以上接口" />
+
+    <Button
+        android:id="@+id/btn_test2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="并发请求两个接口" />
+
+    <Button
+        android:id="@+id/btn_cancelJob2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="取消以上接口" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_log"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </ScrollView>
+
+</LinearLayout>

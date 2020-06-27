@@ -24,7 +24,7 @@
  * 时间：2018/9/30 22:17
  * 描述：
  * GitHub：https://github.com/leavesC
- * Blog：https://www.jianshu.com/u/9df45b87cfdf
+ * Blog：https://juejin.im/user/57c2ea9befa631005abd00c6
  */
 public class BaseEvent {
 
@@ -97,7 +97,7 @@ public interface IViewModelAction {
  * 时间：2018/9/30 22:24
  * 描述：
  * GitHub：https://github.com/leavesC
- * Blog：https://www.jianshu.com/u/9df45b87cfdf
+ * Blog：https://juejin.im/user/57c2ea9befa631005abd00c6
  */
 public class BaseViewModel extends ViewModel implements IViewModelAction {
 
@@ -167,7 +167,7 @@ public class BaseViewModel extends ViewModel implements IViewModelAction {
  * 时间：2017/11/29 21:04
  * 描述：
  * GitHub：https://github.com/leavesC
- * Blog：https://www.jianshu.com/u/9df45b87cfdf
+ * Blog：https://juejin.im/user/57c2ea9befa631005abd00c6
  */
 @SuppressLint("Registered")
 public abstract class BaseActivity extends AppCompatActivity {
@@ -300,7 +300,7 @@ public abstract class BaseActivity extends AppCompatActivity {
  * 时间：2018/10/27 20:53
  * 描述：
  * GitHub：https://github.com/leavesC
- * Blog：https://www.jianshu.com/u/9df45b87cfdf
+ * Blog：https://juejin.im/user/57c2ea9befa631005abd00c6
  */
 public interface RequestCallback<T> {
 
@@ -367,7 +367,7 @@ public class TokenInvalidException extends BaseException {
  * 时间：2018/10/26 23:11
  * 描述：
  * GitHub：https://github.com/leavesC
- * Blog：https://www.jianshu.com/u/9df45b87cfdf
+ * Blog：https://juejin.im/user/57c2ea9befa631005abd00c6
  */
 public class RetrofitManagement {
 
@@ -484,7 +484,7 @@ public class RetrofitManagement {
  * 时间：2018/10/27 20:52
  * 描述：
  * GitHub：https://github.com/leavesC
- * Blog：https://www.jianshu.com/u/9df45b87cfdf
+ * Blog：https://juejin.im/user/57c2ea9befa631005abd00c6
  */
 public class BaseSubscriber<T> extends DisposableObserver<T> {
 
@@ -549,7 +549,7 @@ public class BaseSubscriber<T> extends DisposableObserver<T> {
  * 时间：2018/10/27 7:42
  * 描述：
  * GitHub：https://github.com/leavesC
- * Blog：https://www.jianshu.com/u/9df45b87cfdf
+ * Blog：https://juejin.im/user/57c2ea9befa631005abd00c6
  */
 public abstract class BaseRemoteDataSource {
 
@@ -648,7 +648,7 @@ public abstract class BaseRemoteDataSource {
  * 时间：2018/10/27 21:10
  * 描述：
  * GitHub：https://github.com/leavesC
- * Blog：https://www.jianshu.com/u/9df45b87cfdf
+ * Blog：https://juejin.im/user/57c2ea9befa631005abd00c6
  */
 public class BaseRepo<T> {
 
