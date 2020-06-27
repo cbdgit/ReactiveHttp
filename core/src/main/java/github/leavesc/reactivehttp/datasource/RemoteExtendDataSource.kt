@@ -26,7 +26,7 @@ abstract class RemoteExtendDataSource<T : Any>(iActionEvent: IUIActionEvent?, se
                                        block1: suspend () -> IHttpResBean<T1>,
                                        block2: suspend () -> IHttpResBean<T2>,
                                        block3: suspend () -> IHttpResBean<T3>): Job {
-        return lifecycleSupportedScope.launchMain {
+        return launchMain {
             try {
                 if (showLoading) {
                     showLoading()
@@ -76,7 +76,7 @@ abstract class RemoteExtendDataSource<T : Any>(iActionEvent: IUIActionEvent?, se
     protected fun <T1, T2> execute(callback: RequestPairCallback<T1, T2>?, showLoading: Boolean,
                                    block1: suspend () -> IHttpResBean<T1>,
                                    block2: suspend () -> IHttpResBean<T2>): Job {
-        return lifecycleSupportedScope.launchMain {
+        return launchMain {
             try {
                 if (showLoading) {
                     showLoading()

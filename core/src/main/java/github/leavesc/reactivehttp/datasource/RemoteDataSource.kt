@@ -24,7 +24,7 @@ abstract class RemoteDataSource<T : Any>(iUiActionEvent: IUIActionEvent?, servic
     }
 
     protected fun <T> execute(callback: RequestCallback<T>?, showLoading: Boolean, block: suspend () -> IHttpResBean<T>): Job {
-        return lifecycleSupportedScope.launchMain {
+        return launchMain {
             try {
                 if (showLoading) {
                     showLoading()
@@ -71,7 +71,7 @@ abstract class RemoteDataSource<T : Any>(iUiActionEvent: IUIActionEvent?, servic
     protected fun <T> request(block: suspend () -> IHttpResBean<T>): T {
         return runBlocking {
             try {
-                val asyncIO = lifecycleSupportedScope.asyncIO {
+                val asyncIO = asyncIO {
                     block()
                 }
                 val response = asyncIO.await()
