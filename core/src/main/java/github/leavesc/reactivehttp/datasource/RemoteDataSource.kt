@@ -66,7 +66,10 @@ abstract class RemoteDataSource<T : Any>(iUiActionEvent: IUIActionEvent?, servic
         }
     }
 
-    //同步请求，可能会抛出异常，外部需做好捕获异常的准备
+    /**
+     * 同步请求，可能会抛出异常，外部需做好捕获异常的准备
+     * @param block
+     */
     @Throws(BaseException::class)
     protected fun <T> request(block: suspend () -> IHttpResBean<T>): T {
         return runBlocking {

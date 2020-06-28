@@ -9,6 +9,8 @@ import github.leavesc.reactivehttpsamples.core.http.base.FilterInterceptor
 import github.leavesc.reactivehttpsamples.core.http.base.HttpConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 /**
@@ -44,11 +46,13 @@ open class LocalRemoteDataSource<T : Any>(iActionEvent: IUIActionEvent?, service
     override val releaseUrl: String
         get() = HttpConfig.BASE_URL_MAP
 
-    override val mockUrl: String
-        get() = ""
-
-    override val okHttpClient: OkHttpClient
-        get() = httpClient
+    override fun createRetrofit(baseUrl: String): Retrofit {
+        return Retrofit.Builder()
+                .client(httpClient)
+                .baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+    }
 
     override fun showToast(msg: String) {
         Toast.makeText(MainApplication.context, msg, Toast.LENGTH_SHORT).show()

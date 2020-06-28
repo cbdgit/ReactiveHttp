@@ -12,7 +12,9 @@ import github.leavesc.reactivehttp.coroutine.ICoroutineEvent
  * 时间：2020/4/30 15:23
  * 描述：
  */
-//用于定义 View 和  ViewModel 均需要实现的一些 UI 层行为
+/**
+ * 用于定义 View 和  ViewModel 均需要实现的一些 UI 层行为
+ */
 interface IUIActionEvent : ICoroutineEvent {
 
     fun showLoading(msg: String)
