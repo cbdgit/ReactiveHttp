@@ -14,7 +14,6 @@ import kotlinx.coroutines.awaitAll
  * 时间：2020/5/4 0:55
  * 描述：
  * GitHub：https://github.com/leavesC
- * Blog：https://juejin.im/user/57c2ea9befa631005abd00c6
  */
 /**
  * 提供了 两个/三个 接口同时并发请求的方法，当所有接口都请求成功时，会通过 onSuccess 方法传出请求结果

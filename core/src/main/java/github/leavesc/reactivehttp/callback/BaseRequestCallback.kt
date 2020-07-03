@@ -8,7 +8,6 @@ import github.leavesc.reactivehttp.exception.BaseException
  * 时间：2020/5/4 0:44
  * 描述：
  * GitHub：https://github.com/leavesC
- * Blog：https://juejin.im/user/57c2ea9befa631005abd00c6
  */
 interface BaseRequestCallback {
 

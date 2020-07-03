@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
  * 时间：2019/6/2 20:31
  * 描述：
  * GitHub：https://github.com/leavesC
- * Blog：https://juejin.im/user/57c2ea9befa631005abd00c6
  */
 open class CommonItemDecoration : RecyclerView.ItemDecoration {
 

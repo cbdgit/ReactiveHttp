@@ -40,4 +40,4 @@ class ServerCodeNoSuccessException(errorCode: Int, errorMessage: String) : BaseE
  * @param errorMessage
  * @param localException
  */
-class LocalBadException(errorMessage: String, localException: Throwable) : BaseException(HttpConfig.CODE_LOCAL_UNKNOWN, errorMessage, localException)
+class LocalBadException(errorMessage: String, localException: Throwable) : BaseException(HttpConfig.CODE_ERROR_LOCAL_UNKNOWN, errorMessage, localException)

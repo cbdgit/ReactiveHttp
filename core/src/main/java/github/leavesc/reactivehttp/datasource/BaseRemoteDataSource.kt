@@ -23,7 +23,6 @@ import java.util.concurrent.TimeUnit
  * 时间：2020/5/4 0:56
  * 描述：
  * GitHub：https://github.com/leavesC
- * Blog：https://juejin.im/user/57c2ea9befa631005abd00c6
  */
 abstract class BaseRemoteDataSource<T : Any>(private val iUiActionEvent: IUIActionEvent?, private val serviceApiClass: Class<T>) : ICoroutineEvent {
 
@@ -68,21 +67,20 @@ abstract class BaseRemoteDataSource<T : Any>(private val iUiActionEvent: IUIActi
     /**
      * 和生命周期绑定的协程作用域
      */
-    override val lifecycleSupportedScope = iUiActionEvent?.lifecycleSupportedScope
-            ?: GlobalScope
+    override val lifecycleSupportedScope = iUiActionEvent?.lifecycleSupportedScope ?: GlobalScope
 
     /**
-     * 由子类复写此字段以便获取 release 环境下的接口 Url
+     * 由子类实现此字段以便获取 release 环境下的接口 Url
      */
     protected abstract val releaseUrl: String
 
     /**
-     * 允许子类复写此字段用于获取开发阶段的 mockUrl
+     * 由子类复写此字段来获取开发阶段的 mockUrl
      */
     protected open val mockUrl = ""
 
     /**
-     * 子类通过改变此字段来改为 mock 环境
+     * 子类可以通过复写此字段将当前环境改为 mock 状态
      */
     protected open val isMockState: Boolean
         get() = false
@@ -102,8 +100,9 @@ abstract class BaseRemoteDataSource<T : Any>(private val iUiActionEvent: IUIActi
      * 1.如果调用接口时有传入 host，则直接返回该 host
      * 2.如果当前是 mock 状态且 mockUrl 不为空，则返回 mock url
      * 3.否则最终返回 releaseUrl
-     * 就是说，如果在 DataSource 里所有接口都是需要使用 mock 的话，则在 DataSource 继承 isMockState 将之改为 true
-     * 如果只是少量接口需要 mock 的话，则使用 getService(mockUrl) 来调用 mock 接口
+     * 就是说，如果在 DataSource 里所有接口都是需要使用 mock 的话，则在 DataSource 继承 isMockState 将之改为 true 即可
+     * 之后此 DataSource 内部使用的 baseUrl 就均为 mockUrl
+     * 而如果只是少量接口需要 mock 的话，则使用 getService(mockUrl) 来调用 mock 接口
      * @param baseUrl
      */
     protected open fun generateBaseUrl(baseUrl: String): String {
@@ -170,8 +169,7 @@ abstract class BaseRemoteDataSource<T : Any>(private val iUiActionEvent: IUIActi
         return if (throwable is BaseException) {
             throwable
         } else {
-            LocalBadException(throwable.message
-                    ?: "", throwable)
+            LocalBadException(throwable.message ?: "", throwable)
         }
     }
 

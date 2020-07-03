@@ -17,7 +17,6 @@ import kotlinx.android.synthetic.main.activity_weather.*
  * 时间：2019/6/2 20:18
  * 描述：
  * GitHub：https://github.com/leavesC
- * Blog：https://juejin.im/user/57c2ea9befa631005abd00c6
  */
 class WeatherActivity : BaseActivity() {
 

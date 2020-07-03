@@ -18,7 +18,6 @@ import java.util.concurrent.TimeUnit
  * 时间：2020/6/23 0:37
  * 描述：
  * GitHub：https://github.com/leavesC
- * Blog：https://juejin.im/user/57c2ea9befa631005abd00c6
  */
 open class LocalRemoteDataSource<T : Any>(iActionEvent: IUIActionEvent?, serviceApiClass: Class<T>) : RemoteExtendDataSource<T>(iActionEvent, serviceApiClass) {
 

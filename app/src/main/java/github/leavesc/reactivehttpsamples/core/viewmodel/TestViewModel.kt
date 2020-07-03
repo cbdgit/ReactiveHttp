@@ -17,7 +17,6 @@ import kotlinx.coroutines.delay
  * 时间：2020/5/3 21:39
  * 描述：
  * GitHub：https://github.com/leavesC
- * Blog：https://juejin.im/user/57c2ea9befa631005abd00c6
  */
 class TestViewModel : BaseViewModel() {
 

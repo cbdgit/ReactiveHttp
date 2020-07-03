@@ -13,7 +13,6 @@ import github.leavesc.reactivehttpsamples.core.model.CastsBean
  * 时间：2019/6/7 21:35
  * 描述：
  * GitHub：https://github.com/leavesC
- * Blog：https://juejin.im/user/57c2ea9befa631005abd00c6
  */
 class WeatherAdapter(private val districtsBeanList: List<CastsBean>) :
         RecyclerView.Adapter<WeatherAdapter.WeatherViewHolder>() {

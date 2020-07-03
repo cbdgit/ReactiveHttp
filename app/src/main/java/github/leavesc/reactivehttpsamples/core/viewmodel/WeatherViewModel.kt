@@ -11,7 +11,6 @@ import github.leavesc.reactivehttpsamples.core.model.ForecastsBean
  * 时间：2019/6/7 21:13
  * 描述：
  * GitHub：https://github.com/leavesC
- * Blog：https://juejin.im/user/57c2ea9befa631005abd00c6
  */
 class WeatherViewModel : BaseViewModel() {
 

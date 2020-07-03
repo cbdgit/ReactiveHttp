@@ -7,11 +7,9 @@ package github.leavesc.reactivehttp.config
  */
 internal object HttpConfig {
 
-    //本地定义的 code 以 CODE_LOCAL 开头
-
     /**
      * 此变量用于表示在网络请求过程过程中抛出了异常
      */
-    const val CODE_LOCAL_UNKNOWN = -1024520
+    const val CODE_ERROR_LOCAL_UNKNOWN = -1024520
 
 }
