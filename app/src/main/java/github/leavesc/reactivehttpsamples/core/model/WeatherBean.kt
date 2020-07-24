@@ -4,6 +4,7 @@ package github.leavesc.reactivehttpsamples.core.model
  * 作者：CZY
  * 时间：2020/2/25 16:34
  * 描述：
+ * GitHub：https://github.com/leavesC
  */
 data class ForecastsBean(
         val city: String, val adcode: String, val province: String,

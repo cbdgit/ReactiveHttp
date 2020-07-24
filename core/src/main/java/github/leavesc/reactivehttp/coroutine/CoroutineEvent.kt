@@ -6,6 +6,7 @@ import kotlinx.coroutines.*
  * 作者：CZY
  * 时间：2020/4/30 15:25
  * 描述：
+ * GitHub：https://github.com/leavesC
  */
 interface ICoroutineEvent {
 

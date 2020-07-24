@@ -1,16 +1,14 @@
 package github.leavesc.reactivehttp.viewmodel
 
 import android.content.Context
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelStoreOwner
+import androidx.lifecycle.*
 import github.leavesc.reactivehttp.coroutine.ICoroutineEvent
 
 /**
  * 作者：CZY
  * 时间：2020/4/30 15:23
  * 描述：
+ * GitHub：https://github.com/leavesC
  */
 /**
  * 用于定义 View 和  ViewModel 均需要实现的一些 UI 层行为
@@ -31,23 +29,49 @@ interface IUIActionEvent : ICoroutineEvent {
 
 }
 
+interface IViewModelActionEvent : IUIActionEvent {
+
+    val vmActionEvent: MutableLiveData<BaseActionEvent>
+
+    override fun showLoading(msg: String) {
+        vmActionEvent.postValue(ShowLoadingEvent(msg))
+    }
+
+    override fun dismissLoading() {
+        vmActionEvent.postValue(DismissLoadingEvent)
+    }
+
+    override fun showToast(msg: String) {
+        vmActionEvent.postValue(ShowToastEvent(msg))
+    }
+
+    override fun finishView() {
+        vmActionEvent.postValue(FinishViewEvent)
+    }
+
+}
+
 interface IUIActionEventObserver : IUIActionEvent {
 
     val lContext: Context?
 
     val lLifecycleOwner: LifecycleOwner
 
-    fun <T : BaseViewModel> getViewModel(clazz: Class<T>,
-                                         factory: ViewModelProvider.Factory? = null,
-                                         initializer: (T.(lifecycleOwner: LifecycleOwner) -> Unit)? = null): Lazy<T> {
+    fun <T> getViewModel(clazz: Class<T>,
+                         factory: ViewModelProvider.Factory? = null,
+                         initializer: (T.(lifecycleOwner: LifecycleOwner) -> Unit)? = null): Lazy<T>
+            where T : ViewModel,
+                  T : IViewModelActionEvent {
         return lazy {
             getViewModelFast(clazz, factory, initializer)
         }
     }
 
-    private fun <T : BaseViewModel> getViewModelFast(clazz: Class<T>,
-                                                     factory: ViewModelProvider.Factory? = null,
-                                                     initializer: (T.(lifecycleOwner: LifecycleOwner) -> Unit)? = null): T {
+    private fun <T> getViewModelFast(clazz: Class<T>,
+                                     factory: ViewModelProvider.Factory? = null,
+                                     initializer: (T.(lifecycleOwner: LifecycleOwner) -> Unit)? = null): T
+            where T : ViewModel,
+                  T : IViewModelActionEvent {
         return when (val localValue = lLifecycleOwner) {
             is ViewModelStoreOwner -> {
                 if (factory == null) {
@@ -65,7 +89,7 @@ interface IUIActionEventObserver : IUIActionEvent {
         }
     }
 
-    private fun BaseViewModel.observerActionEvent() {
+    private fun IViewModelActionEvent.observerActionEvent() {
         vmActionEvent.observe(lLifecycleOwner, Observer {
             generateActionEvent(it)
         })

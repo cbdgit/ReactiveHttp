@@ -4,6 +4,7 @@ package github.leavesc.reactivehttp.config
  * 作者：leavesC
  * 时间：2019/5/31 10:49
  * 描述：
+ * GitHub：https://github.com/leavesC
  */
 internal object HttpConfig {
 

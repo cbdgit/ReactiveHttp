@@ -6,6 +6,7 @@ import github.leavesc.reactivehttp.config.HttpConfig
  * 作者：leavesC
  * 时间：2019/5/31 10:48
  * 描述：
+ * GitHub：https://github.com/leavesC
  */
 /**
  * @param errorCode         服务器返回的错误码 或者是 HttpConfig 中定义的本地错误码

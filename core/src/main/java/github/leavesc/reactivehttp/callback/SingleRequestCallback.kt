@@ -6,6 +6,7 @@ import androidx.annotation.MainThread
  * 作者：leavesC
  * 时间：2019/5/31 10:47
  * 描述：
+ * GitHub：https://github.com/leavesC
  */
 /**
  * 使用以下回调，在请求失败时会自动 Toast 失败原因

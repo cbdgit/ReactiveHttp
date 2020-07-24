@@ -3,7 +3,7 @@ package github.leavesc.reactivehttpsamples.ui
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import github.leavesc.reactivehttpsamples.R
-import github.leavesc.reactivehttpsamples.core.view.BaseActivity
+import github.leavesc.reactivehttp.base.BaseReactiveActivity
 import github.leavesc.reactivehttpsamples.core.viewmodel.TestViewModel
 import kotlinx.android.synthetic.main.activity_test.*
 
@@ -13,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_test.*
  * 描述：
  * GitHub：https://github.com/leavesC
  */
-class TestActivity : BaseActivity() {
+class TestActivity : BaseReactiveActivity() {
 
     private val testViewModel by getViewModel(TestViewModel::class.java) {
         logLiveData.observe(this@TestActivity, Observer {

@@ -1,4 +1,4 @@
-package github.leavesc.reactivehttpsamples.core.view
+package github.leavesc.reactivehttp.base
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -16,9 +16,10 @@ import kotlinx.coroutines.CoroutineScope
  * 作者：leavesC
  * 时间：2019/5/31 9:36
  * 描述：
+ * GitHub：https://github.com/leavesC
  */
 @SuppressLint("Registered")
-abstract class BaseActivity : AppCompatActivity(), IUIActionEventObserver {
+abstract class BaseReactiveActivity : AppCompatActivity(), IUIActionEventObserver {
 
     override val lifecycleSupportedScope: CoroutineScope
         get() = lifecycleScope
@@ -33,9 +34,10 @@ abstract class BaseActivity : AppCompatActivity(), IUIActionEventObserver {
 
     override fun showLoading(msg: String) {
         if (loadDialog == null) {
-            loadDialog = ProgressDialog(lContext)
-            loadDialog!!.setCancelable(false)
-            loadDialog!!.setCanceledOnTouchOutside(false)
+            loadDialog = ProgressDialog(lContext).apply {
+                setCancelable(false)
+               setCanceledOnTouchOutside(false)
+            }
         }
         loadDialog?.let {
             if (!it.isShowing) {

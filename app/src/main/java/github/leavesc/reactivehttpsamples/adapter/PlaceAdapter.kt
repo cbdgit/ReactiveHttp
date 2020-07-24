@@ -12,6 +12,7 @@ import github.leavesc.reactivehttpsamples.core.model.DistrictBean
  * 作者：leavesC
  * 时间：2019/6/1 9:58
  * 描述：
+ * GitHub：https://github.com/leavesC
  */
 class PlaceAdapter(private val dataList: List<DistrictBean>, private val onClickListener: OnClickListener) :
         RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder>() {

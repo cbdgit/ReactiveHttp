@@ -2,7 +2,7 @@ package github.leavesc.reactivehttpsamples.core.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import github.leavesc.reactivehttp.callback.RequestCallback
-import github.leavesc.reactivehttp.viewmodel.BaseViewModel
+import github.leavesc.reactivehttp.base.BaseReactiveViewModel
 import github.leavesc.reactivehttpsamples.core.http.WeatherDataSource
 import github.leavesc.reactivehttpsamples.core.model.ForecastsBean
 
@@ -12,7 +12,7 @@ import github.leavesc.reactivehttpsamples.core.model.ForecastsBean
  * 描述：
  * GitHub：https://github.com/leavesC
  */
-class WeatherViewModel : BaseViewModel() {
+class WeatherViewModel : BaseReactiveViewModel() {
 
     private val weatherDataSource = WeatherDataSource(this)
 

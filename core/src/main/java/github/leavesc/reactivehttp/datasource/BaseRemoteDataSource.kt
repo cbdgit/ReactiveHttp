@@ -70,7 +70,7 @@ abstract class BaseRemoteDataSource<T : Any>(private val iUiActionEvent: IUIActi
     override val lifecycleSupportedScope = iUiActionEvent?.lifecycleSupportedScope ?: GlobalScope
 
     /**
-     * 由子类实现此字段以便获取 release 环境下的接口 Url
+     * 由子类实现此字段以便获取 release 环境下的接口 BaseUrl
      */
     protected abstract val releaseUrl: String
 
@@ -196,7 +196,7 @@ abstract class BaseRemoteDataSource<T : Any>(private val iUiActionEvent: IUIActi
     protected open fun exceptionFormat(exception: BaseException): String {
         return when (exception.localException) {
             null -> {
-                //接口返回的 httpCode 并非 successCode，直接返回服务器返回的 errorMessage
+                //接口返回的 httpCode 并非 successCode，直接返回服务器给的 errorMessage
                 exception.errorMessage
             }
             is ConnectException, is SocketTimeoutException, is InterruptedIOException, is UnknownHostException -> {

@@ -5,14 +5,14 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import github.leavesc.reactivehttpsamples.R
-import kotlinx.android.synthetic.main.activity_map.*
-import kotlinx.android.synthetic.main.layout_top_bar.*
 import github.leavesc.reactivehttpsamples.adapter.PlaceAdapter
 import github.leavesc.reactivehttpsamples.core.cache.AreaCache
 import github.leavesc.reactivehttpsamples.core.model.DistrictBean
-import github.leavesc.reactivehttpsamples.core.view.BaseActivity
+import github.leavesc.reactivehttp.base.BaseReactiveActivity
 import github.leavesc.reactivehttpsamples.core.viewmodel.MapViewModel
 import github.leavesc.reactivehttpsamples.widget.CommonItemDecoration
+import kotlinx.android.synthetic.main.activity_map.*
+import kotlinx.android.synthetic.main.layout_top_bar.*
 
 /**
  * 作者：leavesC
@@ -20,7 +20,7 @@ import github.leavesc.reactivehttpsamples.widget.CommonItemDecoration
  * 描述：
  * GitHub：https://github.com/leavesC
  */
-class MapActivity : BaseActivity() {
+class MapActivity : BaseReactiveActivity() {
 
     private val dataList = mutableListOf<DistrictBean>()
 

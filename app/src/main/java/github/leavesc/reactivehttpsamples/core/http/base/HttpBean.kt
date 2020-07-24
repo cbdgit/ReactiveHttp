@@ -7,6 +7,7 @@ import github.leavesc.reactivehttp.bean.IHttpResBean
  * 作者：CZY
  * 时间：2020/4/30 15:22
  * 描述：
+ * GitHub：https://github.com/leavesC
  */
 class HttpResBean<T>(
         @SerializedName("status") var code: Int = 0,

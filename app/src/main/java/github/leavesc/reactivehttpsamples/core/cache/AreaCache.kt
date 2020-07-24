@@ -6,6 +6,7 @@ import android.content.Context
  * 作者：leavesC
  * 时间：2019/6/4 21:22
  * 描述：
+ * GitHub：https://github.com/leavesC
  */
 class AreaCache {
 

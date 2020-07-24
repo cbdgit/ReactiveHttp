@@ -2,7 +2,8 @@ package github.leavesc.reactivehttpsamples.core.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import github.leavesc.reactivehttp.callback.RequestCallback
-import github.leavesc.reactivehttp.viewmodel.BaseViewModel
+import github.leavesc.reactivehttp.base.BaseReactiveViewModel
+import github.leavesc.reactivehttp.exception.BaseException
 import github.leavesc.reactivehttpsamples.core.http.MapDataSource
 import github.leavesc.reactivehttpsamples.core.model.DistrictBean
 
@@ -10,8 +11,9 @@ import github.leavesc.reactivehttpsamples.core.model.DistrictBean
  * 作者：leavesC
  * 时间：2019/5/31 20:41
  * 描述：
+ * GitHub：https://github.com/leavesC
  */
-class MapViewModel : BaseViewModel() {
+class MapViewModel : BaseReactiveViewModel() {
 
     companion object {
 
@@ -41,11 +43,33 @@ class MapViewModel : BaseViewModel() {
 
     fun getProvince() {
         mapDataSource.getProvince(object : RequestCallback<List<DistrictBean>> {
+
+            override fun onStart() {
+
+            }
+
             override fun onSuccess(data: List<DistrictBean>) {
                 stateLiveData.value = TYPE_PROVINCE
                 provinceLiveData.value = data[0].districts
                 realLiveData.value = data[0].districts
             }
+
+            override suspend fun onSuccessIO(data: List<DistrictBean>) {
+
+            }
+
+            override fun onCancelled() {
+
+            }
+
+            override fun onFail(exception: BaseException) {
+
+            }
+
+            override fun onFinally() {
+
+            }
+
         })
     }
 

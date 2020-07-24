@@ -4,6 +4,7 @@ package github.leavesc.reactivehttpsamples.core.http.base
  * 作者：CZY
  * 时间：2020/4/30 17:39
  * 描述：
+ * GitHub：https://github.com/leavesC
  */
 object HttpConfig {
 

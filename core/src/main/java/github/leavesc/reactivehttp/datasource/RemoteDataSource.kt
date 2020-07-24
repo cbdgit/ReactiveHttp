@@ -12,6 +12,7 @@ import kotlinx.coroutines.runBlocking
  * 作者：leavesC
  * 时间：2019/5/31 11:16
  * 描述：
+ * GitHub：https://github.com/leavesC
  */
 abstract class RemoteDataSource<T : Any>(iUiActionEvent: IUIActionEvent?, serviceApiClass: Class<T>) : BaseRemoteDataSource<T>(iUiActionEvent, serviceApiClass) {
 

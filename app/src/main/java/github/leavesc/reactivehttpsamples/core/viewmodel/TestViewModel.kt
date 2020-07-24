@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import github.leavesc.reactivehttp.callback.RequestCallback
 import github.leavesc.reactivehttp.callback.RequestPairCallback
 import github.leavesc.reactivehttp.exception.BaseException
-import github.leavesc.reactivehttp.viewmodel.BaseViewModel
+import github.leavesc.reactivehttp.base.BaseReactiveViewModel
 import github.leavesc.reactivehttpsamples.core.http.TestDataSource
 import github.leavesc.reactivehttpsamples.core.model.ForecastsBean
 import kotlinx.coroutines.CancellationException
@@ -18,7 +18,7 @@ import kotlinx.coroutines.delay
  * 描述：
  * GitHub：https://github.com/leavesC
  */
-class TestViewModel : BaseViewModel() {
+class TestViewModel : BaseReactiveViewModel() {
 
     val logLiveData = MutableLiveData<String>()
 

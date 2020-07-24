@@ -10,6 +10,7 @@ import retrofit2.http.Query
  * 作者：leavesC
  * 时间：2019/5/31 11:17
  * 描述：
+ * GitHub：https://github.com/leavesC
  */
 interface ApiService {
 

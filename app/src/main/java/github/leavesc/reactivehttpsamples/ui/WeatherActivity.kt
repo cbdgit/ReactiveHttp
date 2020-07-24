@@ -3,12 +3,12 @@ package github.leavesc.reactivehttpsamples.ui
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import github.leavesc.reactivehttp.base.BaseReactiveActivity
 import github.leavesc.reactivehttpsamples.R
 import github.leavesc.reactivehttpsamples.adapter.WeatherAdapter
 import github.leavesc.reactivehttpsamples.core.cache.AreaCache
 import github.leavesc.reactivehttpsamples.core.model.CastsBean
 import github.leavesc.reactivehttpsamples.core.model.ForecastsBean
-import github.leavesc.reactivehttpsamples.core.view.BaseActivity
 import github.leavesc.reactivehttpsamples.core.viewmodel.WeatherViewModel
 import kotlinx.android.synthetic.main.activity_weather.*
 
@@ -18,7 +18,7 @@ import kotlinx.android.synthetic.main.activity_weather.*
  * 描述：
  * GitHub：https://github.com/leavesC
  */
-class WeatherActivity : BaseActivity() {
+class WeatherActivity : BaseReactiveActivity() {
 
     private val weatherViewModel by getViewModel(WeatherViewModel::class.java) {
         forecastsBeanLiveData.observe(it, Observer {
