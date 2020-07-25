@@ -17,11 +17,11 @@ import kotlinx.coroutines.runBlocking
 abstract class RemoteDataSource<T : Any>(iUiActionEvent: IUIActionEvent?, serviceApiClass: Class<T>) : BaseRemoteDataSource<T>(iUiActionEvent, serviceApiClass) {
 
     protected fun <T> execute(callback: RequestCallback<T>?, block: suspend () -> IHttpResBean<T>): Job {
-        return execute(callback, showLoading = false, block = block)
+        return execute(callback = callback, showLoading = false, block = block)
     }
 
     protected fun <T> executeLoading(callback: RequestCallback<T>?, block: suspend () -> IHttpResBean<T>): Job {
-        return execute(callback, showLoading = true, block = block)
+        return execute(callback = callback, showLoading = true, block = block)
     }
 
     protected fun <T> execute(callback: RequestCallback<T>?, showLoading: Boolean, block: suspend () -> IHttpResBean<T>): Job {

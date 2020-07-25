@@ -5,6 +5,8 @@ import android.text.TextUtils
 import github.leavesc.reactivehttp.base.BaseReactiveActivity
 import github.leavesc.reactivehttpsamples.R
 import github.leavesc.reactivehttpsamples.core.cache.AreaCache
+import github.leavesc.reactivehttpsamples.ui.weather.MapActivity
+import github.leavesc.reactivehttpsamples.ui.weather.WeatherActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**

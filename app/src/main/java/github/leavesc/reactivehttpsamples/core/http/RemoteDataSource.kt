@@ -51,7 +51,7 @@ class TestDataSource(actionEventEvent: IUIActionEvent) : LocalRemoteDataSource<A
 
     private suspend fun testDelay(): HttpResBean<String> {
         withIO {
-            delay(3000)
+            delay(2000)
         }
         return HttpResBean(1, "msg", "data coming")
     }

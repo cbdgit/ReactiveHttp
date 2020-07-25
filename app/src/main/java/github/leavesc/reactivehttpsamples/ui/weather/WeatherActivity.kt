@@ -1,4 +1,4 @@
-package github.leavesc.reactivehttpsamples.ui
+package github.leavesc.reactivehttpsamples.ui.weather
 
 import android.os.Bundle
 import androidx.lifecycle.Observer

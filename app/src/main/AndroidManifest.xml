@@ -27,11 +27,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MapActivity"
+            android:name=".ui.weather.MapActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".ui.WeatherActivity"
+            android:name=".ui.weather.WeatherActivity"
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden" />

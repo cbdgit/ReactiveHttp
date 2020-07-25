@@ -34,6 +34,11 @@ abstract class BaseRemoteDataSource<T : Any>(private val iUiActionEvent: IUIActi
         private val serviceApiCache = LruCache<String, Any>(30)
 
         /**
+         * Retrofit 缓存
+         */
+        private val retrofitCache = LruCache<String, Retrofit>(3)
+
+        /**
          * 默认的 OKHttpClient
          */
         private val defaultOkHttpClient by lazy {
@@ -120,13 +125,15 @@ abstract class BaseRemoteDataSource<T : Any>(private val iUiActionEvent: IUIActi
     }
 
     private fun getService(baseUrl: String, clazz: Class<T>): T {
-        //以 baseUrl 路径 + ApiService 的类路径作为 key
         val key = baseUrl + clazz.canonicalName
         val get = serviceApiCache.get(key)
         if (get != null) {
             return get as T
         }
-        val value = createRetrofit(baseUrl).create(clazz)
+        val retrofit = retrofitCache.get(baseUrl) ?: (createRetrofit(baseUrl).apply {
+            retrofitCache.put(baseUrl, this)
+        })
+        val value = retrofit.create(clazz)
         serviceApiCache.put(key, value)
         return value
     }

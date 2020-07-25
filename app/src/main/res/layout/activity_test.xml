@@ -17,13 +17,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="包含各个回调时机" />
+        android:text="发起网络请求，查看各个回调时机" />
 
     <Button
         android:id="@+id/btn_cancelJob1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="取消以上接口" />
+        android:text="取消上述网络请求" />
 
     <Button
         android:id="@+id/btn_test2"
@@ -36,7 +36,7 @@
         android:id="@+id/btn_cancelJob2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="取消以上接口" />
+        android:text="取消上述两个请求" />
 
     <ScrollView
         android:layout_width="match_parent"
