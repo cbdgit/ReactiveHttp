@@ -36,7 +36,7 @@ abstract class BaseReactiveActivity : AppCompatActivity(), IUIActionEventObserve
         if (loadDialog == null) {
             loadDialog = ProgressDialog(lContext).apply {
                 setCancelable(false)
-               setCanceledOnTouchOutside(false)
+                setCanceledOnTouchOutside(false)
             }
         }
         loadDialog?.let {

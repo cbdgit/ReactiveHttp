@@ -31,22 +31,28 @@ interface IUIActionEvent : ICoroutineEvent {
 
 interface IViewModelActionEvent : IUIActionEvent {
 
-    val vmActionEvent: MutableLiveData<BaseActionEvent>
+    val showLoadingLD: MutableLiveData<ShowLoadingEvent>
+
+    val dismissLoadingLD: MutableLiveData<DismissLoadingEvent>
+
+    val showToastEventLD: MutableLiveData<ShowToastEvent>
+
+    val finishViewEventLD: MutableLiveData<FinishViewEvent>
 
     override fun showLoading(msg: String) {
-        vmActionEvent.postValue(ShowLoadingEvent(msg))
+        showLoadingLD.postValue(ShowLoadingEvent(msg))
     }
 
     override fun dismissLoading() {
-        vmActionEvent.postValue(DismissLoadingEvent)
+        dismissLoadingLD.postValue(DismissLoadingEvent)
     }
 
     override fun showToast(msg: String) {
-        vmActionEvent.postValue(ShowToastEvent(msg))
+        showToastEventLD.postValue(ShowToastEvent(msg))
     }
 
     override fun finishView() {
-        vmActionEvent.postValue(FinishViewEvent)
+        finishViewEventLD.postValue(FinishViewEvent)
     }
 
 }
@@ -84,32 +90,24 @@ interface IUIActionEventObserver : IUIActionEvent {
                 clazz.newInstance()
             }
         }.apply {
-            observerActionEvent()
+            generateActionEvent(this)
             initializer?.invoke(this, lLifecycleOwner)
         }
     }
 
-    private fun IViewModelActionEvent.observerActionEvent() {
-        vmActionEvent.observe(lLifecycleOwner, Observer {
-            generateActionEvent(it)
+    fun generateActionEvent(iViewModelActionEvent: IViewModelActionEvent) {
+        iViewModelActionEvent.showLoadingLD.observe(lLifecycleOwner, Observer {
+            this@IUIActionEventObserver.showLoading(it.message)
         })
-    }
-
-    fun generateActionEvent(baseActionEvent: BaseActionEvent) {
-        when (baseActionEvent) {
-            is ShowLoadingEvent -> {
-                this@IUIActionEventObserver.showLoading(baseActionEvent.message)
-            }
-            DismissLoadingEvent -> {
-                this@IUIActionEventObserver.dismissLoading()
-            }
-            FinishViewEvent -> {
-                this@IUIActionEventObserver.finishView()
-            }
-            is ShowToastEvent -> {
-                this@IUIActionEventObserver.showToast(baseActionEvent.message)
-            }
-        }
+        iViewModelActionEvent.dismissLoadingLD.observe(lLifecycleOwner, Observer {
+            this@IUIActionEventObserver.dismissLoading()
+        })
+        iViewModelActionEvent.showToastEventLD.observe(lLifecycleOwner, Observer {
+            this@IUIActionEventObserver.showToast(it.message)
+        })
+        iViewModelActionEvent.finishViewEventLD.observe(lLifecycleOwner, Observer {
+            this@IUIActionEventObserver.finishView()
+        })
     }
 
 }
