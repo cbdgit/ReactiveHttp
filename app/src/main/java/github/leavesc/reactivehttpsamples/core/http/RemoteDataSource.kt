@@ -62,6 +62,13 @@ class TestDataSource(actionEventEvent: IUIActionEvent) : LocalRemoteDataSource<A
         }
     }
 
+    fun testDelay2(callback: RequestCallback<HttpResBean<String>>): Job {
+        return executeOrigin(callback) {
+            delay(3000)
+            HttpResBean(1, "msg", "data coming")
+        }
+    }
+
     fun testPair(callback: RequestPairCallback<List<ForecastsBean>, String>): Job {
         return execute(callback, showLoading = false, block1 = { getService().getWeather("411122") }, block2 = {
             delay(1000)

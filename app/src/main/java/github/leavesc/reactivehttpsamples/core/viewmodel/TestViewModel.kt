@@ -2,11 +2,12 @@ package github.leavesc.reactivehttpsamples.core.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import github.leavesc.reactivehttp.base.BaseReactiveViewModel
 import github.leavesc.reactivehttp.callback.RequestCallback
 import github.leavesc.reactivehttp.callback.RequestPairCallback
 import github.leavesc.reactivehttp.exception.BaseException
-import github.leavesc.reactivehttp.base.BaseReactiveViewModel
 import github.leavesc.reactivehttpsamples.core.http.TestDataSource
+import github.leavesc.reactivehttpsamples.core.http.base.HttpResBean
 import github.leavesc.reactivehttpsamples.core.model.ForecastsBean
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Job
@@ -37,7 +38,7 @@ class TestViewModel : BaseReactiveViewModel() {
 
     private var job1: Job? = null
 
-    fun testDelay() {
+    fun testDelay1() {
         job1?.cancel(CancellationException("主动取消Job"))
         job1 = testDataSource.testDelay(object : RequestCallback<String> {
 
@@ -75,11 +76,53 @@ class TestViewModel : BaseReactiveViewModel() {
         job1?.cancel()
     }
 
+
     private var job2: Job? = null
 
-    fun testPair() {
+    fun testDelay2() {
         job2?.cancel(CancellationException("主动取消Job"))
-        job2 = testDataSource.testPair(object : RequestPairCallback<List<ForecastsBean>, String> {
+        job2 = testDataSource.testDelay2(object : RequestCallback<HttpResBean<String>> {
+
+            override fun onStart() {
+                log("onStart")
+            }
+
+            override fun onCancelled() {
+                log("onCancelled")
+            }
+
+            override fun onSuccess(data: HttpResBean<String>) {
+                log("onSuccess: " + data)
+            }
+
+            override suspend fun onSuccessIO(data: HttpResBean<String>) {
+                repeat(5) {
+                    delay(300)
+                    postLog("onSuccessIO: " + it)
+                }
+            }
+
+            override fun onFail(exception: BaseException) {
+                log("onFail: " + exception.errorMessage)
+            }
+
+            override fun onFinally() {
+                log("onFinally")
+            }
+
+        })
+    }
+
+    fun cancelJob2() {
+        job2?.cancel()
+    }
+
+
+    private var jobPair: Job? = null
+
+    fun testPair() {
+        jobPair?.cancel(CancellationException("主动取消Job"))
+        jobPair = testDataSource.testPair(object : RequestPairCallback<List<ForecastsBean>, String> {
 
             override fun onStart() {
                 log("onStart")
@@ -111,12 +154,8 @@ class TestViewModel : BaseReactiveViewModel() {
         })
     }
 
-    fun cancelJob2() {
-        job2?.cancel()
-    }
-
-    private fun throwException() {
-        throw Exception("xxxxxxxxxxxxx")
+    fun cancelJobPair() {
+        jobPair?.cancel()
     }
 
 }

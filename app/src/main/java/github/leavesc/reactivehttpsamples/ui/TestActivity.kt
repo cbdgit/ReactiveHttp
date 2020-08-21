@@ -29,17 +29,25 @@ class TestActivity : BaseReactiveActivity() {
             tv_log.text = ""
         }
 
-        btn_test.setOnClickListener {
-            testViewModel.testDelay()
+        btn_test1.setOnClickListener {
+            testViewModel.testDelay1()
         }
         btn_cancelJob1.setOnClickListener {
             testViewModel.cancelJob1()
         }
+
         btn_test2.setOnClickListener {
-            testViewModel.testPair()
+            testViewModel.testDelay2()
         }
         btn_cancelJob2.setOnClickListener {
             testViewModel.cancelJob2()
+        }
+
+        btn_test3.setOnClickListener {
+            testViewModel.testPair()
+        }
+        btn_cancelJob3.setOnClickListener {
+            testViewModel.cancelJobPair()
         }
     }
 

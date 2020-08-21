@@ -54,6 +54,41 @@ abstract class RemoteDataSource<T : Any>(iUiActionEvent: IUIActionEvent?, servic
         }
     }
 
+    protected fun <T> executeOrigin(callback: RequestCallback<T>?, block: suspend () -> T): Job {
+        return executeOrigin(callback = callback, showLoading = false, block = block)
+    }
+
+    protected fun <T> executeOriginLoading(callback: RequestCallback<T>?, block: suspend () -> T): Job {
+        return executeOrigin(callback = callback, showLoading = true, block = block)
+    }
+
+    protected fun <T> executeOrigin(callback: RequestCallback<T>?, showLoading: Boolean, block: suspend () -> T): Job {
+        return launchMain {
+            try {
+                if (showLoading) {
+                    showLoading()
+                }
+                callback?.onStart()
+                val response: T
+                try {
+                    response = block()
+                } catch (throwable: Throwable) {
+                    handleException(throwable, callback)
+                    return@launchMain
+                }
+                onGetResponse(callback, response)
+            } finally {
+                try {
+                    callback?.onFinally()
+                } finally {
+                    if (showLoading) {
+                        dismissLoading()
+                    }
+                }
+            }
+        }
+    }
+
     private suspend fun <T> onGetResponse(callback: RequestCallback<T>?, httpData: T) {
         withNonCancellable {
             callback?.apply {

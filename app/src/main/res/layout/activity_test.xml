@@ -13,11 +13,11 @@
         android:text="清除日志文件" />
 
     <Button
-        android:id="@+id/btn_test"
+        android:id="@+id/btn_test1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="发起网络请求，查看各个回调时机" />
+        android:text="发起网络请求，只包含目标 data，查看各个回调时机" />
 
     <Button
         android:id="@+id/btn_cancelJob1"
@@ -25,15 +25,29 @@
         android:layout_height="wrap_content"
         android:text="取消上述网络请求" />
 
+
     <Button
         android:id="@+id/btn_test2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="发起网络请求，包含整个 JavaBean，查看各个回调时机" />
+
+    <Button
+        android:id="@+id/btn_cancelJob2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="取消上述网络请求" />
+
+    <Button
+        android:id="@+id/btn_test3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="并发请求两个接口" />
 
     <Button
-        android:id="@+id/btn_cancelJob2"
+        android:id="@+id/btn_cancelJob3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="取消上述两个请求" />

@@ -26,4 +26,8 @@ class HttpResBean<T>(
     override val httpIsSuccess: Boolean
         get() = code == HttpConfig.CODE_SERVER_SUCCESS || message == "OK"
 
+    override fun toString(): String {
+        return "HttpResBean(code=$code, message=$message, data=$data)"
+    }
+
 }
