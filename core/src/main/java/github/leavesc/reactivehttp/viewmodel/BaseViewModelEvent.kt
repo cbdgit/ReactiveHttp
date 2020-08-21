@@ -95,17 +95,17 @@ interface IUIActionEventObserver : IUIActionEvent {
         }
     }
 
-    fun generateActionEvent(iViewModelActionEvent: IViewModelActionEvent) {
-        iViewModelActionEvent.showLoadingLD.observe(lLifecycleOwner, Observer {
+    fun <T> generateActionEvent(viewModel: T) where T : ViewModel, T : IViewModelActionEvent {
+        viewModel.showLoadingLD.observe(lLifecycleOwner, Observer {
             this@IUIActionEventObserver.showLoading(it.message)
         })
-        iViewModelActionEvent.dismissLoadingLD.observe(lLifecycleOwner, Observer {
+        viewModel.dismissLoadingLD.observe(lLifecycleOwner, Observer {
             this@IUIActionEventObserver.dismissLoading()
         })
-        iViewModelActionEvent.showToastEventLD.observe(lLifecycleOwner, Observer {
+        viewModel.showToastEventLD.observe(lLifecycleOwner, Observer {
             this@IUIActionEventObserver.showToast(it.message)
         })
-        iViewModelActionEvent.finishViewEventLD.observe(lLifecycleOwner, Observer {
+        viewModel.finishViewEventLD.observe(lLifecycleOwner, Observer {
             this@IUIActionEventObserver.finishView()
         })
     }
