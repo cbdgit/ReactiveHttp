@@ -2,8 +2,8 @@ package github.leavesc.reactivehttpsamples.ui
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
-import github.leavesc.reactivehttpsamples.R
 import github.leavesc.reactivehttp.base.BaseReactiveActivity
+import github.leavesc.reactivehttpsamples.R
 import github.leavesc.reactivehttpsamples.core.viewmodel.TestViewModel
 import kotlinx.android.synthetic.main.activity_test.*
 

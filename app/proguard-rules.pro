@@ -20,4 +20,4 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep class leavesc.reactivehttp.weather.core.** {*;}
+-keep class github.leavesc.reactivehttpsamples.core.model.** {*;}

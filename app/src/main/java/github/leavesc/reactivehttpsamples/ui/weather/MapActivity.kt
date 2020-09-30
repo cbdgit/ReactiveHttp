@@ -4,11 +4,11 @@ import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import github.leavesc.reactivehttp.base.BaseReactiveActivity
 import github.leavesc.reactivehttpsamples.R
 import github.leavesc.reactivehttpsamples.adapter.PlaceAdapter
 import github.leavesc.reactivehttpsamples.core.cache.AreaCache
 import github.leavesc.reactivehttpsamples.core.model.DistrictBean
-import github.leavesc.reactivehttp.base.BaseReactiveActivity
 import github.leavesc.reactivehttpsamples.core.viewmodel.MapViewModel
 import github.leavesc.reactivehttpsamples.widget.CommonItemDecoration
 import kotlinx.android.synthetic.main.activity_map.*

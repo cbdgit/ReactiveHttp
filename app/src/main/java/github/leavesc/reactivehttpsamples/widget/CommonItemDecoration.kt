@@ -40,7 +40,7 @@ open class CommonItemDecoration : RecyclerView.ItemDecoration {
 
     constructor(context: Context, orientation: Int = LinearLayoutManager.VERTICAL) : this(
             getDivider(context),
-        orientation
+            orientation
     )
 
     override fun getItemOffsets(outRect: Rect, view: View, parent: RecyclerView, state: RecyclerView.State) {

@@ -1,8 +1,8 @@
 package github.leavesc.reactivehttpsamples.core.viewmodel
 
 import androidx.lifecycle.MutableLiveData
-import github.leavesc.reactivehttp.callback.RequestCallback
 import github.leavesc.reactivehttp.base.BaseReactiveViewModel
+import github.leavesc.reactivehttp.callback.RequestCallback
 import github.leavesc.reactivehttpsamples.core.http.WeatherDataSource
 import github.leavesc.reactivehttpsamples.core.model.ForecastsBean
 
